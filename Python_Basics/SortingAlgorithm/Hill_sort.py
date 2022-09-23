@@ -9,27 +9,32 @@
 # Description：
 """
 
+"""
+    stability: unstable
+    Time complexity: related to the step size
+"""
 
 def shell_sort(alist):
-    n = len(alist) #列表的长度
-    gap =  n // 2   #步长 （这个步长不一定最优）
+    n = len(alist)  # length of the list
+    gap =  n // 2   # step size (this step size may not be optimal)
 
-    #gap变化到0之前，插入算法的执行次数
+    # gap changes to 0, the number of executions of the insertion algorithm
     while gap>0:
-        #起始值从gap的开始，到列表的长度n结束
-        #希尔排序与普通的插入排序不同点是gap的长度
+        # The starting value is from the beginning of the gap to the end of the length n of the list
+        # The difference between Hill sorting and ordinary insertion sorting is the length of the gap
         for j in range(gap,n):
             #j = [gap+1,gap+2,gap+3 ....n-1]
             i = j
-            while i>0:  #下标元素到0截止
-                #如果当前元素比前一个元素的值小，交换俩个数的位置
+            # Subscript element to 0 cutoff
+            while i>0:
+                # If the current element is smaller than the value of the previous element, swap the positions of the two numbers
                 if alist[i] < alist[i-gap]:
                     alist[i],alist[i-gap]=alist[i-gap],alist[i]
-                    #下标的值往前挪动，减去一个步长的值
+                    # The value of the subscript moves forward, minus a step value
                     i -= gap
                 else:
                     break
-        #当前的步长循环结束后，缩短当前的步长
+        # After the current step cycle ends, shorten the current step
         gap//=2
 
 
@@ -39,5 +44,3 @@ if __name__ == '__main__':
     shell_sort(alist)
     print(alist) # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-    # 稳定性： 不稳定
-    # 时间复杂度：跟步长有关
